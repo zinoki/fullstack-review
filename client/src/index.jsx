@@ -22,7 +22,7 @@ class App extends React.Component {
       data: term,
       contentType: 'text/plain',
       success: function(data) {
-        console.log('Success! \nHere is your data: ', data)
+        console.log('Success! \nHere is your data: ', JSON.stringify(data))
       },
       error: function() {
         console.log('There was an error');

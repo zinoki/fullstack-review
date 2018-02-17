@@ -7,11 +7,10 @@ var helpers = require('../helpers/github.js');
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.text())
 app.post('/repos', function (req, res) {
-  
-  // res.send(req.body);
-  // res.send(req.body)
   var repos = helpers.getReposByUsername(req.body);
-  res.send(repos)
+
+
+  res.send('Success!')
 
 
   // TODO - your code here!
