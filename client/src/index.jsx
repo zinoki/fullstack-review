@@ -13,8 +13,10 @@ class App extends React.Component {
     }
 
   }
-
-  search (term) {
+  update(data) {
+    this.setState({repos: data})
+  }
+  search (term, cb) {
     console.log(`${term} was searched`);
     $.ajax({
       method: 'POST',
@@ -34,7 +36,9 @@ class App extends React.Component {
       data: term,
       contentType: 'text/plain',
       success: function(data) {
-        console.log('Success! \nHere is your data: ', data)
+        console.log('Success! \nHere is your data: ', data);
+        cb(data);
+
       },
       error: function() {
         console.log('There was an error');
@@ -46,7 +50,7 @@ class App extends React.Component {
     return (<div>
       <h1>Github Fetcher</h1>
       <RepoList repos={this.state.repos}/>
-      <Search onSearch={this.search.bind(this)}/>
+      <Search update={this.update.bind(this)} onSearch={this.search.bind(this)}/>
     </div>)
   }
 }
