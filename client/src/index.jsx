@@ -14,6 +14,8 @@ class App extends React.Component {
 
   }
   update(data) {
+    // console.log(data[0]);
+    // var data = Array.from(data);
     this.setState({repos: data})
   }
   search (term, cb) {
