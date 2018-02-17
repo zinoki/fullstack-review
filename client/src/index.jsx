@@ -22,7 +22,19 @@ class App extends React.Component {
       data: term,
       contentType: 'text/plain',
       success: function(data) {
-        console.log('Success! \nHere is your data: ', JSON.stringify(data))
+        console.log('Success! \nHere is your data: ', data)
+      },
+      error: function() {
+        console.log('There was an error');
+      }
+    })
+    $.ajax({
+      method: 'GET',
+      url: server + '/repos',
+      data: term,
+      contentType: 'text/plain',
+      success: function(data) {
+        console.log('Success! \nHere is your data: ', data)
       },
       error: function() {
         console.log('There was an error');

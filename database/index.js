@@ -42,7 +42,7 @@ var getRepos = function(callback) {
       console.log('Error in retrieving repo') 
     }
     callback(query)
-  }).limit(5).sort({forks:-1})
+  }).limit(25).sort({forks:-1})
 }
 
 
