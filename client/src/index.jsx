@@ -22,10 +22,10 @@ class App extends React.Component {
       data: term,
       contentType: 'text/plain',
       success: function(data) {
-        console.log('data : ', data)
+        console.log('Success! \nHere is your data: ', data)
       },
       error: function() {
-        console.log('a was an error');
+        console.log('There was an error');
       }
     })
   }

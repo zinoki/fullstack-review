@@ -1,12 +1,16 @@
 const express = require('express');
 let app = express();
 const bodyParser = require('body-parser');
+var helpers = require('../helpers/github.js');
+
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.text())
 app.post('/repos', function (req, res) {
-  res.send(req.body);
   
+  // res.send(req.body);
+  res.send(req.body)
+  helpers.getReposByUsername(req.body);
 
 
   // TODO - your code here!
