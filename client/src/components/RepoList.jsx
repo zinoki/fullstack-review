@@ -4,6 +4,7 @@ const RepoList = ({repos}) => (
   <div>
     <h4> Repo List Component </h4>
     There are {repos.length} repos.
+    <h4>Here are the top 25 repos!</h4>
     <table>
       <tbody>
         <tr><td>User ID</td><td>Repo Name</td><td>URL</td><td>Forks</td><td>Watchers</td></tr>
