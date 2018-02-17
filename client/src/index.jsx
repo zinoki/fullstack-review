@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Search from './components/Search.jsx';
 import RepoList from './components/RepoList.jsx';
+var server = 'http://localhost:1128';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,7 +16,18 @@ class App extends React.Component {
 
   search (term) {
     console.log(`${term} was searched`);
-    // TODO
+    $.ajax({
+      method: 'POST',
+      url: server + '/repos',
+      data: term,
+      contentType: 'text/plain',
+      success: function(data) {
+        console.log('data : ', data)
+      },
+      error: function() {
+        console.log('a was an error');
+      }
+    })
   }
 
   render () {
