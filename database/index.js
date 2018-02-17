@@ -36,14 +36,13 @@ let save = (repos) => {
     });
   }
 }
-
-var getRepos = function() {
-  Repo.find(function(err, query) {
+var getRepos = function(callback) {
+    Repo.find(function(err, query) {
     if (err) {
       console.log('Error in retrieving repo') 
     }
-    res.send(query);
-  }).limit(25).sort({forks:-1})
+    callback(query)
+  }).limit(5).sort({forks:-1})
 }
 
 

@@ -1,13 +1,13 @@
 const express = require('express');
 let app = express();
 const bodyParser = require('body-parser');
-var helpers = require('../helpers/github.js');
-
+var fromGithub = require('../helpers/github.js');
+var displayFromDB = require('../database/index.js')
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.text())
 app.post('/repos', function (req, res) {
-  var repos = helpers.getReposByUsername(req.body);
+  var repos = fromGithub.getReposByUsername(req.body);
 
 
   res.send('Success!')
@@ -19,10 +19,11 @@ app.post('/repos', function (req, res) {
   // save the repo information in the database
 });
 
+
 app.get('/repos', function (req, res) {
-  res.send('hi')
-  // TODO - your code here!
-  // This route should send back the top 25 repos
+  displayFromDB.getRepos(function(top25) {
+    res.send(top25);
+  })
 });
 
 let port = 1128;
