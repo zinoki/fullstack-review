@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/fetcher');
 
 let repoSchema = mongoose.Schema({
-  repo_id: Number,
+  repo_id: {type: Number, unique: true},
   user_id: Number,
   repo_name: String,
   repo_description: String,
@@ -29,13 +29,9 @@ let save = (repos) => {
       forks: currRepo.forks,
       watchers: currRepo.watchers
     });
-    Repo.find({repo_id: newRepo.id}, function(err,query){
-      if(query === undefined){
-        newRepo.save(function(err, data){
-          if (err){
-            return console.error('Error: ', err);
-          }
-        });
+    newRepo.save(function(err, data){
+      if (err){
+        return console.error('Error: ', err);
       }
     });
   }
