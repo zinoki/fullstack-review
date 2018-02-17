@@ -9,8 +9,9 @@ app.use(bodyParser.text())
 app.post('/repos', function (req, res) {
   
   // res.send(req.body);
-  res.send(req.body)
-  helpers.getReposByUsername(req.body);
+  // res.send(req.body)
+  var repos = helpers.getReposByUsername(req.body);
+  res.send(repos)
 
 
   // TODO - your code here!
