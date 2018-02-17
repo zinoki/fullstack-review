@@ -19,6 +19,11 @@ app.post('/repos', function (req, res) {
   // save the repo information in the database
 });
 
+app.get('/', function (req, res) {
+  displayFromDB.getRepos(function(top25) {
+    res.send(top25);
+  })
+});
 
 app.get('/repos', function (req, res) {
   displayFromDB.getRepos(function(top25) {
